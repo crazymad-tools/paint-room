@@ -1,0 +1,23 @@
+.section {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 10px;
+
+	ul {
+		flex-shrink: 1;
+		height: 100%;
+	}
+
+	input {
+		flex-shrink: 0;
+		padding: 6px 16px;
+		font-size: 16px;
+		outline: none;
+		color: #666;
+
+		&::placeholder {
+			color: #999;
+		}
+	}
+}
