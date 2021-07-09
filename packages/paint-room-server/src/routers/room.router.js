@@ -1,38 +1,25 @@
 const Router = require("@koa/router");
-const uuid = require("uuid").v4;
 const { ResponseData } = require("../common");
+const RoomDao = require("../dao/room.dao");
 const router = new Router();
-
-const rooms = [];
 
 /**
  * 添加房间
  */
 router.post("/api/room/add", (ctx) => {
-  const id = uuid();
-  rooms.push({
-    id,
-    users: [],
-  });
+  const room = RoomDao.addRoom();
 
-  ctx.body = ResponseData.success({
-    id,
-    users: [],
-  });
+  ctx.body = ResponseData.success(room);
 });
 
 /**
  * 获取房间列表
  */
 router.get("/api/rooms", (ctx) => {
-  // const userId = ctx.session.userId;
-  // console.log(userId);
+  const rooms = RoomDao.getRooms();
 
   ctx.body = ResponseData.success(
-    rooms.map((room) => ({
-      id: room.id,
-      userCount: room.users.length,
-    }))
+    rooms.map((room) => ({ userCount: room.users.length, id: room.id }))
   );
 });
 
@@ -41,8 +28,9 @@ router.get("/api/rooms", (ctx) => {
  */
 router.get("/api/room/:id", (ctx) => {
   const { id } = ctx.params;
+  const room = RoomDao.getRoomDetail(id);
 
-  ctx.body = ResponseData.success(rooms.find((room) => room.id === id));
+  ctx.body = ResponseData.success(room);
 });
 
 module.exports = router;

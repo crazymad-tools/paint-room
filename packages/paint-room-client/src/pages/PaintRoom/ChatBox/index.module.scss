@@ -7,6 +7,30 @@
 	ul {
 		flex-shrink: 1;
 		height: 100%;
+		list-style: none;
+		padding: 0;
+		overflow: auto;
+
+		li {
+			margin: 3px 0;
+		}
+
+		.systemMsg {
+			color: #0dc349;
+			padding-left: 14px;
+			font-weight: bold;
+			font-size: 14px;
+		}
+		.userMsg {
+			label {
+				color: black;
+				font-weight: bold;
+				margin-right: 12px;
+			}
+			span {
+				color: #999;
+			}
+		}
 	}
 
 	input {

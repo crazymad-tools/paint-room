@@ -25,8 +25,22 @@ const PaintRoom: React.FC = (props) => {
           <div className="canvas-container"></div>
           {/* 答题 聊天 */}
           <div className="chat-answer-container">
-            <ChatBox placeholder="请输入答案" history={[]} disable={false} />
-            <ChatBox placeholder="请输入聊天内容" history={[]} disable={false} />
+            <ChatBox
+              placeholder="请输入答案"
+              history={[
+                { type: "user", text: "hello world", userName: "aaaa" },
+                { type: "user", text: "大的**", userName: "aaaa" },
+                { type: "user", text: "... world", userName: "aaaa" },
+                { type: "system", text: "你答对了" },
+                { type: "system", text: "aaaa答对了" },
+              ]}
+              disable={false}
+            />
+            <ChatBox
+              placeholder="请输入聊天内容"
+              history={[]}
+              disable={false}
+            />
           </div>
         </aside>
       </section>
